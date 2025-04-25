@@ -27,7 +27,7 @@ export const Container = ({ children }: { children: ComponentChildren }) => {
 					<div className='absolute -right-11 top-24 z-10 rotate-90 px-4'>
 						<SchemeSelector show={finishIntro} useDark={useDark} setUseDark={setUseDark} />
 					</div>
-					<div className='relative flex h-full w-full overflow-scroll text-center sm:text-left'>
+					<div className='relative flex h-full w-full overflow-y-scroll text-center sm:text-left'>
 						<div className={finishIntro ? 'w-full p-5' : ''}>
 							<div
 								className={`absolute flex h-1/2 w-1/2 items-center justify-center transition-opacity duration-1000 ${showIntro ? 'opacity-100' : 'opacity-0'} ${finishIntro ? 'hidden' : ''}`}
