@@ -23,9 +23,10 @@ jobs:
       - name: Build Vite project
         run: npm run build
 
-      - name: Add CNAME
+      - name: Add CNAME and .nojekyll
         run: |
           echo "www.ahrampy.com" > dist/CNAME
+          touch dist/.nojekyll
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
