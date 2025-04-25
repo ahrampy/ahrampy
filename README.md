@@ -1,6 +1,6 @@
-portfolio
+# portfolio
 
-* npm
-* vite
-* preact
-* tailwind
+- npm
+- vite
+- preact
+- tailwind
