@@ -1,6 +1,6 @@
 # portfolio
 
 - npm
-- vite
 - preact
 - tailwind
+- vite
