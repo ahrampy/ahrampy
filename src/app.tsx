@@ -1,6 +1,6 @@
-import { Container } from './components/Container';
-import { Header } from './components/Header';
-import { MainContent } from './components/MainContent';
+import { Container } from './Layout/Container';
+import { Header } from './Layout/Header';
+import { MainContent } from './Layout/MainContent';
 
 export function App() {
 	return (

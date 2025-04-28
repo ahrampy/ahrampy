@@ -1,6 +1,6 @@
 import { ComponentChildren } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { SchemeSelector } from './SchemeSelector';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import { SchemeSelector } from '../components/SchemeSelector';
 
 export const Container = ({ children }: { children: ComponentChildren }) => {
 	const [useDark, setUseDark] = useState(window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -8,9 +8,34 @@ export const Container = ({ children }: { children: ComponentChildren }) => {
 	const [showIntro, setShowIntro] = useState(true);
 	const [finishIntro, setFinishIntro] = useState(false);
 
+	const scrollContainerRef = useRef<HTMLDivElement>(null);
+	const [mobileScrolled, setMobileScrolled] = useState(false);
+
 	useEffect(() => {
 		setTimeout(() => setShowIntro(false), 1500);
 		setTimeout(() => setFinishIntro(true), 2500);
+	}, []);
+
+	useEffect(() => {
+		const container = scrollContainerRef.current;
+		if (!container) return;
+
+		const handleScroll = () => {
+			if (window.innerWidth < 640) {
+				setMobileScrolled(container.scrollTop > 0);
+			} else {
+				setMobileScrolled(false);
+			}
+		};
+
+		container.addEventListener('scroll', handleScroll);
+		window.addEventListener('resize', handleScroll);
+		handleScroll();
+
+		return () => {
+			container.removeEventListener('scroll', handleScroll);
+			window.removeEventListener('resize', handleScroll);
+		};
 	}, []);
 
 	return (
@@ -23,11 +48,13 @@ export const Container = ({ children }: { children: ComponentChildren }) => {
 				}}
 			>
 				<div className='relative h-full w-full p-2 sm:p-12'>
-					{/* // todo fix position on mobile scroll */}
 					<div className='absolute -right-11 top-24 z-10 rotate-90 px-4'>
-						<SchemeSelector show={finishIntro} useDark={useDark} setUseDark={setUseDark} />
+						<SchemeSelector show={finishIntro && !mobileScrolled} useDark={useDark} setUseDark={setUseDark} />
 					</div>
-					<div className='relative flex h-full w-full overflow-y-scroll text-center sm:text-left'>
+					<div
+						ref={scrollContainerRef}
+						className='relative flex h-full w-full overflow-y-scroll text-center sm:text-left'
+					>
 						<div className={finishIntro ? 'w-full p-5' : ''}>
 							<div
 								className={`absolute flex h-1/2 w-1/2 items-center justify-center transition-opacity duration-1000 ${showIntro ? 'opacity-100' : 'opacity-0'} ${finishIntro ? 'hidden' : ''}`}

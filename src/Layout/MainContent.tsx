@@ -1,8 +1,8 @@
-import { Section } from './Section';
+import { Section } from '../components/Section';
 
 export const MainContent = () => {
 	return (
-		<div className='flex w-full h-full flex-col gap-4 overflow-hidden pb-4'>
+		<div className='flex h-full w-full flex-col gap-4 overflow-hidden pb-4'>
 			<Section
 				title='About Me'
 				startsExpanded

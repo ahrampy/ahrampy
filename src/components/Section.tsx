@@ -23,7 +23,7 @@ export const Section = ({
 					<span>{title}</span>
 				</h3>
 			</button>
-			<p className={`px-10 pb-6 ${expanded ? '' : 'hidden'}`}>{content}</p>
+			<div className={`px-10 pb-6 ${expanded ? '' : 'hidden'}`}>{content}</div>
 		</div>
 	);
 };

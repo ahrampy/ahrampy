@@ -1,6 +1,6 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { LinkButton } from './LinkButton';
 import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { LinkButton } from '../components/LinkButton';
 
 const links = [
 	{
