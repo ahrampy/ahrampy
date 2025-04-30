@@ -1,15 +1,16 @@
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ReactNode, useState } from 'preact/compat';
+import { ComponentChildren } from 'preact';
+import { useState } from 'preact/compat';
 
 export const Section = ({
 	title,
-	content,
 	startsExpanded = false,
+	children,
 }: {
 	title: string;
-	content: string | ReactNode;
 	startsExpanded?: boolean;
+	children: ComponentChildren;
 }) => {
 	const [expanded, setExpanded] = useState(startsExpanded);
 
@@ -23,7 +24,7 @@ export const Section = ({
 					<span>{title}</span>
 				</h3>
 			</button>
-			<div className={`px-10 pb-6 ${expanded ? '' : 'hidden'}`}>{content}</div>
+			<div className={`px-10 pb-6 ${expanded ? '' : 'hidden'}`}>{children}</div>
 		</div>
 	);
 };
