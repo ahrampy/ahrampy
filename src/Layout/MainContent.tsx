@@ -2,6 +2,7 @@ import { Section } from '../components/Section';
 import { LinkButton } from '../components/LinkButton';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { ProjectCard } from '../components/ProjectCard';
+import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
 export const MainContent = () => {
 	return (
@@ -21,22 +22,21 @@ export const MainContent = () => {
 						<h4 className='text-l mb-2'>Frontend Development</h4>
 						<ul className='list-inside list-disc space-y-1'>
 							<li>
-								Languages & Frameworks: React, React Native, TypeScript, JavaScript, HTML5, CSS3, Tailwind CSS, Ag-Grid
+								Languages & Frameworks: React, React Native, TypeScript, JavaScript, Express, Node, Python, HTML5, CSS3, Ruby on Rail
 							</li>
 							<li>
-								Design Systems & UI Libraries: Custom UI components, enterprise design systems, accessibility (ARIA),
-								responsive/mobile-first design
+								Design Systems & UI Libraries: Tailwind, Material, Bootstrap, Ag-Grid, D3, enterprise design systems
 							</li>
-							<li>Testing & QA: Jest, Cypress, unit/integration/e2e testing, CI-driven testing workflows</li>
+							<li>Testing & QA: Jest, Mocha, Cypress, Rspec, unit/integration/e2e testing, CI-driven testing workflows</li>
 						</ul>
 					</li>
 					<li>
 						<h4 className='text-l mb-2'>Backend & Full Stack</h4>
 						<ul className='list-inside list-disc space-y-1'>
 							<li>Languages & Frameworks: Node.js, Express, Koa, Ruby on Rails</li>
-							<li>Databases: PostgreSQL, Sequelize</li>
+							<li>Databases: PostgreSQL, Sequelize, TypeORM, MongoDB, ActiveRecord</li>
 							<li>
-								Real-time & Cloud Infrastructure: Socket.io, Redis, Google Cloud Platform, AWS, Cloud Functions, Docker
+								Real-time & Cloud Infrastructure: Socket.io, Redis, GCP, AWS, Cloud Functions / Lambdas, Docker
 							</li>
 							<li>API Design: REST, GraphQL</li>
 						</ul>
@@ -67,7 +67,7 @@ export const MainContent = () => {
 							<li>Git, GitHub, GitHub Actions</li>
 							<li>Docker, CLI tools, VS Code</li>
 							<li>Stripe integration</li>
-							<li>Agile & sprint planning tools (Jira, Notion, etc.)</li>
+							<li>Agile & general planning tools (Jira, Notion, etc.)</li>
 						</ul>
 					</li>
 				</ul>
@@ -92,6 +92,37 @@ export const MainContent = () => {
 							mostly, it was a small passion project that gave me more real-world insight than I could have ever
 							anticipated, and had such a much positive response that I have since been seeking that same rush from
 							awesome UX across the board, although I may always be chasing that first high.
+						</p>
+					</ProjectCard>
+					<ProjectCard>
+						<div className='flex items-center gap-2'>
+							<h4>Flipcamp</h4>
+							<LinkButton title='Flipcamp Repo' icon={faGitAlt} link='https://github.com/ahrampy/Flipcamp' size='sm' />
+						</div>
+						<p>
+							Ever wish there was a way to find awesome, low cost private camping spots all across the US? Well,
+							fortunately Hipcamp exists and does a great job. To get some practice with a RoR + React + Redux (all the
+							'R's), I made a mini clone of that site. I learned about some of the classic scaling issues with React
+							components, as well as the joys of the React + npm ecosystems.
+						</p>
+					</ProjectCard>
+					<ProjectCard>
+						<div className='flex items-center gap-2'>
+							<h4>Mustachions</h4>
+							<LinkButton
+								title='Mustachions Repo'
+								icon={faGitAlt}
+								link='https://github.com/ahrampy/Mustachions'
+								size='sm'
+							/>
+						</div>
+						<p>
+							After my foray into web games, I was chatting with a friend about some of the highs and lows, and we
+							decided to give it another go, this time a bit more of a progressive, art-focused vibe-y mobile game. It
+							gave me a chance to see what some of the game focused logic could look like in React Native, as well as
+							see what tooling Expo had to offer (the answer was a lot). We never got it off the ground, but it was
+							blast to animate little plants swaying in the window, and to figure out the math behind correctly scaling
+							an isometric room to different screen sizes.
 						</p>
 					</ProjectCard>
 				</div>
