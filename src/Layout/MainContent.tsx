@@ -59,7 +59,7 @@ export const MainContent = () => {
 		<div className='flex h-full w-full flex-col gap-4 overflow-hidden pb-4'>
 			<Section title='About Me' startsExpanded>
 				<p>
-					Full-stack engineer with 7+ years building scalable web applications across enterprise and startup
+					Full-stack engineer with {new Date().getFullYear() - 2018}+ years building scalable web applications across enterprise and startup
 					environments. I've led cross-functional teams, driven technical strategy, and mentored engineers, while
 					staying hands-on across the stack. I care deeply about the craft: readable code, thoughtful architecture,
 					and experiences users love. When I'm not shipping, I'm probably outside or trying something new.
