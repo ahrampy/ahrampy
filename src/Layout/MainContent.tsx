@@ -8,7 +8,7 @@ const experience = [
 	{
 		title: 'Senior Software Engineer & Team Lead',
 		company: 'Bellwood',
-		period: 'May 2021 – Present',
+		period: 'May 2021 - Present',
 		bullets: [
 			'Leading a cross-functional team across concurrent client engagements, owning delivery, capacity planning, and code review.',
 			'Drove technical strategy, system design, and roadmap prioritization across enterprise, mid-cap, and startup clients.',
@@ -19,7 +19,7 @@ const experience = [
 	{
 		title: 'Software Engineer & Instructor',
 		company: 'App Academy',
-		period: 'May 2019 – May 2021',
+		period: 'May 2019 - May 2021',
 		bullets: [
 			'Designed and delivered a full-stack web development curriculum to 400+ students across 8 cohorts, covering React, Node.js, REST API design, DS&A, and database fundamentals.',
 			'Built internal automation tools that reduced lesson startup time by 50%, streamlining daily operations for instructors.',
