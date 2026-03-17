@@ -17,7 +17,7 @@ export const Section = ({
 	return (
 		<div className='flex w-full flex-col rounded-xl bg-white shadow-sm dark:bg-white/[0.06]'>
 			<button
-				className='flex w-full items-center justify-center gap-2 px-5 py-4 sm:justify-start'
+				className={`flex w-full items-center justify-center gap-2 px-5 py-4 hover:bg-secondary/5 hover:opacity-100 sm:justify-start dark:hover:bg-primary/5 ${expanded ? 'rounded-t-xl' : 'rounded-xl'}`}
 				onClick={() => setExpanded(!expanded)}
 			>
 				<FontAwesomeIcon icon={expanded ? faChevronDown : faChevronUp} className='hidden sm:block' />
