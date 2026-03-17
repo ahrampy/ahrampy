@@ -1,5 +1,5 @@
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons';
+import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { LinkButton } from '../components/LinkButton';
 
 const links = [
@@ -16,7 +16,7 @@ const links = [
 	{
 		title: 'Resume',
 		url: 'https://docs.google.com/document/d/1iWwoVHg0mztsw3AuRrhNCI4nMQAIB7W2RutjPrBYio0/export?format=pdf',
-		icon: faFloppyDisk,
+		icon: faFileArrowDown,
 	},
 ];
 
