@@ -5,8 +5,16 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				primary: '#E1CF9A',
-				secondary: '#171717',
+				primary: '#FAF9F7',
+				secondary: '#1C1917',
+				accent: '#B08050',
+			},
+			fontWeight: {
+				light: '200',
+				normal: '400',
+				medium: '500',
+				semibold: '600',
+				bold: '700',
 			},
 		},
 	},

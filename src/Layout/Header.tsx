@@ -15,24 +15,24 @@ const links = [
 	},
 	{
 		title: 'Resume',
-		url: 'https://docs.google.com/document/d/1NmOAfy1hJpbXuEPgVQ2vwncQM52VaudWlLqLtX6H5X8/export?format=pdf',
+		url: 'https://docs.google.com/document/d/1iWwoVHg0mztsw3AuRrhNCI4nMQAIB7W2RutjPrBYio0/export?format=pdf',
 		icon: faFloppyDisk,
 	},
 ];
 
 export const Header = () => {
 	return (
-		<div className='flex h-fit w-full flex-col gap-4'>
-			<div>
-				<div className='flex flex-col items-center justify-center gap-x-2 sm:flex-row sm:justify-start'>
-					<h1 className='text-4xl'>Adrian Rampy</h1>
-					<div className='flex gap-1'>
+		<div className='flex h-fit w-full flex-col gap-2 pb-2'>
+			<div className='flex flex-col items-center gap-1 sm:items-start'>
+				<div className='flex flex-col items-center gap-x-3 sm:flex-row sm:items-center'>
+					<h1 className='text-4xl font-bold'>Adrian Rampy</h1>
+					<div className='mt-1 flex gap-1 sm:mt-0'>
 						{links.map(({ title, url, icon }) => (
 							<LinkButton title={title} link={url} icon={icon} />
 						))}
 					</div>
 				</div>
-				<h2 className='px-4 text-xl sm:px-0'>Engineering Leader • Front-End Focused • Experience-Centric Developer</h2>
+				<h2 className='px-4 text-lg font-medium opacity-60 sm:px-0'>Full-Stack Engineer • Technical Lead • Experience-Centric Developer</h2>
 			</div>
 		</div>
 	);

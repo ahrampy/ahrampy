@@ -4,111 +4,134 @@ import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { ProjectCard } from '../components/ProjectCard';
 import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
+const experience = [
+	{
+		title: 'Senior Software Engineer & Team Lead',
+		company: 'Bellwood',
+		period: 'May 2021 – Present',
+		bullets: [
+			'Leading a cross-functional team across concurrent client engagements, owning delivery, capacity planning, and code review.',
+			'Drove technical strategy, system design, and roadmap prioritization across enterprise, mid-cap, and startup clients.',
+			'Led technical hiring for 12+ roles; designed challenges and mentoring frameworks that accelerated time-to-productivity.',
+			'Key projects: micro-frontend architecture for Chick-fil-A, real-time document collaboration for ExhibitSuite, i18n + WCAG compliance for Broadcom, AWS Lambda serverless suite for Rainbook.',
+		],
+	},
+	{
+		title: 'Software Engineer & Instructor',
+		company: 'App Academy',
+		period: 'May 2019 – May 2021',
+		bullets: [
+			'Designed and delivered a full-stack web development curriculum to 400+ students across 8 cohorts, covering React, Node.js, REST API design, DS&A, and database fundamentals.',
+			'Built internal automation tools that reduced lesson startup time by 50%, streamlining daily operations for instructors.',
+		],
+	},
+];
+
+const skills = [
+	{
+		category: 'Languages & Frameworks',
+		tags: ['TypeScript', 'JavaScript (ES6+)', 'React', 'Node.js', 'Ruby on Rails', 'Express', 'Koa', 'GraphQL', 'Ruby', 'Python'],
+	},
+	{
+		category: 'Frontend',
+		tags: ['React Query', 'React Hook Form', 'Redux', 'Zustand', 'Next.js', 'Tailwind CSS', 'Material UI', 'Micro-frontends', 'Design Systems', 'WCAG / a11y', 'SSR / SSG', 'Performance Optimization', 'D3', 'Ag-Grid'],
+	},
+	{
+		category: 'Backend & Data',
+		tags: ['REST API Design', 'Microservices', 'PostgreSQL', 'Redis', 'TypeORM', 'Sequelize', 'OAuth', 'JWT', 'RBAC'],
+	},
+	{
+		category: 'Infrastructure & DevOps',
+		tags: ['AWS (S3, EC2, Lambda, CloudFront, RDS)', 'Docker', 'GitHub Actions CI/CD', 'GCP', 'Firebase', 'Heroku', 'Rollbar'],
+	},
+	{
+		category: 'Leadership',
+		tags: ['Team Lead', 'Technical Strategy', 'Roadmap Planning', 'Mentorship', 'Hiring', 'Stakeholder Management', 'Agile / Scrum'],
+	},
+	{
+		category: 'Testing & Tooling',
+		tags: ['Jest', 'Cypress', 'Integration Testing', 'E2E Testing', 'Git', 'Webpack', 'Vite', 'Monorepo Architecture'],
+	},
+];
+
 export const MainContent = () => {
 	return (
 		<div className='flex h-full w-full flex-col gap-4 overflow-hidden pb-4'>
 			<Section title='About Me' startsExpanded>
 				<p>
-					I've always loved building things, whether it is an app, furniture, or going wild with a box of Legos. My
-					journey into software began with designing simple web pages, and over time it grew into a full-blown passion
-					for creating thoughtful, user-centered experiences. I've taught, mentored, and led engineering teams, and I
-					thrive when combining technical execution with human connection. When I'm not coding, I'm probably exploring
-					outside, sharing food with friends, or learning a new game.
+					Full-stack engineer with 7+ years building scalable web applications across enterprise and startup
+					environments. I've led cross-functional teams, driven technical strategy, and mentored engineers, while
+					staying hands-on across the stack. I care deeply about the craft: readable code, thoughtful architecture,
+					and experiences users love. When I'm not shipping, I'm probably outside or trying something new.
 				</p>
 			</Section>
+			<Section title='Work Experience' startsExpanded>
+				<div className='relative'>
+					<div className='absolute left-[7px] top-0 h-full w-px bg-accent/30' />
+					<div className='flex flex-col gap-7'>
+						{experience.map(({ title, company, period, bullets }) => (
+							<div key={company} className='relative pl-7'>
+								<div className='absolute left-0 top-[6px] h-3.5 w-3.5 rounded-full border-2 border-accent bg-primary dark:bg-secondary' />
+								<div className='flex flex-wrap items-baseline gap-x-2'>
+									<h4 className='font-semibold'>{title}</h4>
+									<span className='text-sm opacity-60'>{company}</span>
+								</div>
+								<p className='mb-2 text-sm opacity-50'>{period}</p>
+								<ul className='space-y-1.5'>
+									{bullets.map((b) => (
+										<li key={b} className='flex gap-2 text-sm'>
+											<span className='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary/30 dark:bg-primary/30' />
+											{b}
+										</li>
+									))}
+								</ul>
+							</div>
+						))}
+					</div>
+				</div>
+			</Section>
 			<Section title='Skills'>
-				<ul className='space-y-4'>
-					<li>
-						<h4 className='text-l mb-2'>Frontend Development</h4>
-						<ul className='list-inside list-disc space-y-1'>
-							<li>
-								Languages & Frameworks: React, React Native, TypeScript, JavaScript, Express, Node, Python, HTML5, CSS3, Ruby on Rail
-							</li>
-							<li>
-								Design Systems & UI Libraries: Tailwind, Material, Bootstrap, Ag-Grid, D3, enterprise design systems
-							</li>
-							<li>Testing & QA: Jest, Mocha, Cypress, Rspec, unit/integration/e2e testing, CI-driven testing workflows</li>
-						</ul>
-					</li>
-					<li>
-						<h4 className='text-l mb-2'>Backend & Full Stack</h4>
-						<ul className='list-inside list-disc space-y-1'>
-							<li>Languages & Frameworks: Node.js, Express, Koa, Ruby on Rails</li>
-							<li>Databases: PostgreSQL, Sequelize, TypeORM, MongoDB, ActiveRecord</li>
-							<li>
-								Real-time & Cloud Infrastructure: Socket.io, Redis, GCP, AWS, Cloud Functions / Lambdas, Docker
-							</li>
-							<li>API Design: REST, GraphQL</li>
-						</ul>
-					</li>
-					<li>
-						<h4 className='text-l mb-2'>Architecture & Patterns</h4>
-						<ul className='list-inside list-disc space-y-1'>
-							<li>Micro Frontend Architecture</li>
-							<li>Monorepo & modular design</li>
-							<li>Cloud-based architecture & deployment pipelines</li>
-							<li>Internationalization (i18n) and localization (l10n)</li>
-							<li>Performance optimization and codebase modernization</li>
-						</ul>
-					</li>
-					<li>
-						<h4 className='text-l mb-2'>Leadership & Collaboration</h4>
-						<ul className='list-inside list-disc space-y-1'>
-							<li>Technical leadership and roadmap planning</li>
-							<li>Cross-functional collaboration with product, design, and business teams</li>
-							<li>Mentorship, coaching, and performance review cycles</li>
-							<li>Hiring, onboarding, and team-building</li>
-							<li>1:1s, career development support, and engineering culture cultivation</li>
-						</ul>
-					</li>
-					<li>
-						<h4 className='text-l mb-2'>Dev Tools & Miscellaneous</h4>
-						<ul className='list-inside list-disc space-y-1'>
-							<li>Git, GitHub, GitHub Actions</li>
-							<li>Docker, CLI tools, VS Code</li>
-							<li>Stripe integration</li>
-							<li>Agile & general planning tools (Jira, Notion, etc.)</li>
-						</ul>
-					</li>
-				</ul>
+				<div className='flex flex-col gap-5'>
+					{skills.map(({ category, tags }) => (
+						<div key={category}>
+							<h4 className='mb-2 font-medium'>{category}</h4>
+							<div className='flex flex-wrap gap-2'>
+								{tags.map((tag) => (
+									<span key={tag} className='rounded-full border border-accent/30 bg-accent/[0.06] px-3 py-1 text-sm'>
+										{tag}
+									</span>
+								))}
+							</div>
+						</div>
+					))}
+				</div>
 			</Section>
 			<Section title='Side Projects & Experiments'>
-				<div class='flex flex-col gap-4'>
+				<div className='flex flex-col gap-4'>
 					<ProjectCard>
 						<div className='flex items-center gap-2'>
-							<h4>Tower Time</h4>
+							<h4 className='font-semibold'>Tower Time</h4>
 							<LinkButton title='Play Tower Time' icon={faPlay} link='https://towertime.netlify.app/' size='sm' />
 						</div>
 						<p>
-							When I was first learning JS, I built the web game I always wanted to play growing up - a simple tower
-							defense that uses path finding around the towers the players built - suggesting creativity in tower
-							placement to create a maze for the critters crossing the map. I used OOP for game objects, built custom
-							sprites to animate as well as all the pixel art for the game, had awesome community support (someone even
-							sent me a soundtrack they made for it!), and couldn't stop adding little QOL improvements and cleaning up
-							the code (it was all in vanilla JS, yikes). It was a blast, and I learned so many things for the first
-							time, like tight vs. loose coupling, the actual payoff and time sink of refactors, the sometimes
-							inescapable reality of math, gathering user feedback, and so much more. I may or may not still go back and
-							play it from time to time... and think about how great of a little mobile game it could grow up to be, but
-							mostly, it was a small passion project that gave me more real-world insight than I could have ever
-							anticipated, and had such a much positive response that I have since been seeking that same rush from
-							awesome UX across the board, although I may always be chasing that first high.
+							A tower defense game I built while learning JS — complete with pathfinding, custom pixel art sprites, and
+							a community-submitted soundtrack. It went surprisingly viral, taught me more about coupling, refactoring,
+							and user feedback than any tutorial could, and gave me a lasting obsession with great UX.
 						</p>
 					</ProjectCard>
 					<ProjectCard>
 						<div className='flex items-center gap-2'>
-							<h4>Flipcamp</h4>
+							<h4 className='font-semibold'>Flipcamp</h4>
 							<LinkButton title='Flipcamp Repo' icon={faGitAlt} link='https://github.com/ahrampy/Flipcamp' size='sm' />
 						</div>
 						<p>
-							Ever wish there was a way to find awesome, low cost private camping spots all across the US? Well,
-							fortunately Hipcamp exists and does a great job. To get some practice with a RoR + React + Redux (all the
-							'R's), I made a mini clone of that site. I learned about some of the classic scaling issues with React
-							components, as well as the joys of the React + npm ecosystems.
+							A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR + React stack.
+							Good practice in component architecture and the joys of the npm ecosystem.
 						</p>
 					</ProjectCard>
 					<ProjectCard>
 						<div className='flex items-center gap-2'>
-							<h4>Mustachions</h4>
+							<h4 className='font-semibold'>Mustachions</h4>
 							<LinkButton
 								title='Mustachions Repo'
 								icon={faGitAlt}
@@ -117,12 +140,8 @@ export const MainContent = () => {
 							/>
 						</div>
 						<p>
-							After my foray into web games, I was chatting with a friend about some of the highs and lows, and we
-							decided to give it another go, this time a bit more of a progressive, art-focused vibe-y mobile game. It
-							gave me a chance to see what some of the game focused logic could look like in React Native, as well as
-							see what tooling Expo had to offer (the answer was a lot). We never got it off the ground, but it was
-							blast to animate little plants swaying in the window, and to figure out the math behind correctly scaling
-							an isometric room to different screen sizes.
+							A React Native mobile game experiment with a friend — art-focused, isometric, and never shipped. But
+							animating plants and solving the math behind scaling an isometric room to arbitrary screen sizes was a blast.
 						</p>
 					</ProjectCard>
 				</div>

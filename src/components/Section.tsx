@@ -15,16 +15,19 @@ export const Section = ({
 	const [expanded, setExpanded] = useState(startsExpanded);
 
 	return (
-		<div
-			className={`flex w-full flex-col gap-2 rounded border border-secondary dark:border-primary ${expanded ? 'border-t-0 pt-px' : ''}`}
-		>
-			<button className='px-4 py-2' onClick={() => setExpanded(!expanded)}>
-				<h3 class='flex items-center justify-center gap-2 text-xl sm:justify-start'>
-					<FontAwesomeIcon icon={expanded ? faChevronDown : faChevronUp} className='hidden sm:block' />
-					<span>{title}</span>
-				</h3>
+		<div className='flex w-full flex-col rounded-xl bg-white shadow-sm dark:bg-white/[0.06]'>
+			<button
+				className='flex w-full items-center justify-center gap-2 px-5 py-4 sm:justify-start'
+				onClick={() => setExpanded(!expanded)}
+			>
+				<FontAwesomeIcon icon={expanded ? faChevronDown : faChevronUp} className='hidden sm:block' />
+				<h3 className='text-xl font-semibold'>{title}</h3>
 			</button>
-			<div className={`px-10 pb-6 ${expanded ? '' : 'hidden'}`}>{children}</div>
+			{expanded && (
+				<div className='border-t border-secondary/10 px-5 pb-6 pt-4 dark:border-primary/10'>
+					{children}
+				</div>
+			)}
 		</div>
 	);
 };
