@@ -1,14 +1,14 @@
 export const SchemeSelector = ({
-	show,
+	show = true,
 	useDark,
 	setUseDark,
 }: {
-	show: boolean;
+	show?: boolean;
 	useDark: boolean;
 	setUseDark: (useDark: boolean) => void;
 }) => {
 	return (
-		<div className={`flex justify-end gap-1 transition-opacity duration-1000 ${show ? 'opacity-100' : 'opacity-0'}`}>
+		<div className={`flex gap-1 transition-opacity duration-1000 ${show ? 'opacity-100' : 'opacity-0'}`}>
 			<button className='flex items-center gap-2 p-1' onClick={() => setUseDark(false)}>
 				<div className={`h-2 w-2 border border-secondary dark:border-primary ${!useDark && 'bg-secondary'}`} />
 				<p>light</p>
