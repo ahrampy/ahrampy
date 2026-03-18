@@ -5,7 +5,6 @@ import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LinkButton } from '../components/LinkButton';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { ProjectCard } from '../components/ProjectCard';
 import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
 const experience = [
@@ -180,15 +179,18 @@ export const MainContent = ({
 
 			<section id='skills' className='scroll-mt-8'>
 				<MobileSection label='Skills'>
-					<div className='flex flex-col gap-5'>
+					<div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
 						{skills.map(({ category, tags }) => (
-							<div key={category}>
+							<div
+								key={category}
+								className='rounded-lg border border-accent/20 bg-accent/[0.04] p-4'
+							>
 								<h4 className='mb-2 text-sm font-medium'>{category}</h4>
-								<div className='flex flex-wrap gap-2'>
+								<div className='flex flex-wrap gap-1.5'>
 									{tags.map((tag) => (
 										<span
 											key={tag}
-											className='rounded-full border border-accent/30 bg-accent/[0.06] px-3 py-1 text-sm'
+											className='rounded-full border border-accent/30 bg-accent/[0.06] px-2.5 py-0.5 text-xs'
 										>
 											{tag}
 										</span>
@@ -203,7 +205,7 @@ export const MainContent = ({
 			<section id='projects' className='scroll-mt-8'>
 				<MobileSection label='Side Projects'>
 					<div className='flex flex-col gap-4'>
-						<ProjectCard>
+						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-semibold'>Tower Time</h4>
 								<LinkButton title='Play Tower Time' icon={faPlay} link='https://towertime.netlify.app/' size='sm' />
@@ -214,8 +216,8 @@ export const MainContent = ({
 								more about coupling, refactoring, and user feedback than any tutorial could, and gave me
 								a lasting obsession with great UX.
 							</p>
-						</ProjectCard>
-						<ProjectCard>
+						</div>
+						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-semibold'>Flipcamp</h4>
 								<LinkButton title='Flipcamp Repo' icon={faGitAlt} link='https://github.com/ahrampy/Flipcamp' size='sm' />
@@ -224,8 +226,8 @@ export const MainContent = ({
 								A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR +
 								React stack. Good practice in component architecture and the joys of the npm ecosystem.
 							</p>
-						</ProjectCard>
-						<ProjectCard>
+						</div>
+						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-semibold'>Mustachions</h4>
 								<LinkButton
@@ -240,7 +242,7 @@ export const MainContent = ({
 								shipped. But animating plants and solving the math behind scaling an isometric room to
 								arbitrary screen sizes was a blast.
 							</p>
-						</ProjectCard>
+						</div>
 					</div>
 				</MobileSection>
 			</section>

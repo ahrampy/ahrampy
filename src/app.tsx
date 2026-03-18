@@ -22,7 +22,7 @@ export function App() {
 					className={`flex h-full transition-opacity duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
 				>
 					{/* Sticky sidebar — desktop only */}
-					<aside className='hidden h-full w-[36%] shrink-0 flex-col justify-between px-10 py-14 lg:flex xl:w-[32%]'>
+					<aside className='hidden h-full w-[36%] shrink-0 flex-col justify-between px-10 py-14 lg:flex xl:w-[30%]'>
 						<Header activeSection={activeSection} />
 						<SchemeSelector useDark={useDark} setUseDark={setUseDark} />
 					</aside>
