@@ -162,11 +162,11 @@ export const MainContent = ({
 			<section id='experience' className='scroll-mt-8'>
 				<MobileSection label='Work Experience' icon='briefcase' startsExpanded>
 					<div className='relative'>
-						<div className='absolute left-[7px] top-0 h-full w-px bg-accent/30' />
+						<div className='absolute left-[7px] top-0 h-full w-[2px] border-l-2 border-dashed border-accent/30' />
 						<div className='flex flex-col gap-7'>
 							{experience.map(({ title, company, period, bullets }) => (
 								<div key={company} className='relative pl-7'>
-									<div className='absolute left-0 top-[6px] h-3 w-3 border-2 border-accent bg-primary dark:bg-secondary' />
+									<div className='absolute left-[2px] top-[6px] h-3 w-3 border-2 border-accent bg-primary dark:bg-secondary' />
 									<div className='flex flex-wrap items-baseline gap-x-2'>
 										<h4 className='font-pixel text-base'>{title}</h4>
 										<span className='text-sm opacity-60'>{company}</span>
