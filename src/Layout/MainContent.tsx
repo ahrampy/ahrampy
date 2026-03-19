@@ -35,7 +35,7 @@ const skills = [
 	},
 	{
 		category: 'Frontend',
-		tags: ['React Query', 'React Hook Form', 'Redux', 'Zustand', 'Next.js', 'Tailwind CSS', 'Material UI', 'Micro-frontends', 'Design Systems', 'WCAG / a11y', 'SSR / SSG', 'Performance Optimization', 'D3', 'Ag-Grid'],
+		tags: ['React Query', 'React Hook Form', 'Redux', 'Zustand', 'Next.js', 'Tailwind CSS', 'Material UI', 'Micro-frontends', 'Design Systems', 'WCAG / a11y', 'SSR / SSG', 'Performance Optimization', 'Ag-Grid'],
 	},
 	{
 		category: 'Backend & Data',
@@ -64,7 +64,7 @@ const SectionLabel = ({
 	children: ComponentChildren;
 	icon?: string;
 }) => (
-	<h3 className='mb-5 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent lg:flex'>
+	<h3 className='mb-5 hidden items-center gap-3 font-pixel text-sm uppercase text-accent lg:flex'>
 		{icon && <PixelIcon sprite={icon} size={2} />}
 		{children}
 	</h3>
@@ -90,7 +90,7 @@ const MobileSection = ({
 				onClick={() => setExpanded(!expanded)}
 			>
 				{icon && <PixelIcon sprite={icon} size={2} />}
-				<span className='text-xs font-semibold uppercase tracking-[0.15em] text-accent'>
+				<span className='font-pixel text-sm uppercase text-accent'>
 					{label}
 				</span>
 				<PixelIcon
@@ -166,16 +166,16 @@ export const MainContent = ({
 						<div className='flex flex-col gap-7'>
 							{experience.map(({ title, company, period, bullets }) => (
 								<div key={company} className='relative pl-7'>
-									<div className='absolute left-0 top-[6px] h-3.5 w-3.5 rounded-full border-2 border-accent bg-primary dark:bg-secondary' />
+									<div className='absolute left-0 top-[6px] h-3 w-3 border-2 border-accent bg-primary dark:bg-secondary' />
 									<div className='flex flex-wrap items-baseline gap-x-2'>
-										<h4 className='font-semibold'>{title}</h4>
+										<h4 className='font-pixel text-base'>{title}</h4>
 										<span className='text-sm opacity-60'>{company}</span>
 									</div>
-									<p className='mb-2 text-sm opacity-50'>{period}</p>
+									<p className='mb-2 font-pixel text-xs opacity-50'>{period}</p>
 									<ul className='space-y-1.5'>
 										{bullets.map((b) => (
 											<li key={b} className='flex gap-2 text-sm'>
-												<span className='mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-secondary/30 dark:bg-primary/30' />
+												<span className='mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent/40' />
 												{b}
 											</li>
 										))}
@@ -195,14 +195,14 @@ export const MainContent = ({
 						{skills.map(({ category, tags }) => (
 							<div
 								key={category}
-								className='rounded-lg border border-accent/20 bg-accent/[0.04] p-4'
+								className='pixel-border border-accent/20 bg-accent/[0.04] p-4'
 							>
-								<h4 className='mb-2 text-sm font-medium'>{category}</h4>
+								<h4 className='mb-2 font-pixel text-sm'>{category}</h4>
 								<div className='flex flex-wrap gap-1.5'>
 									{tags.map((tag) => (
 										<span
 											key={tag}
-											className='rounded-full border border-accent/30 bg-accent/[0.06] px-2.5 py-0.5 text-xs'
+											className='border border-dashed border-accent/30 bg-accent/[0.06] px-2.5 py-0.5 text-xs'
 										>
 											{tag}
 										</span>
@@ -219,9 +219,9 @@ export const MainContent = ({
 			<section id='projects' className='scroll-mt-8'>
 				<MobileSection label='Side Projects' icon='rocket'>
 					<div className='flex flex-col gap-4'>
-						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
+						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
-								<h4 className='font-semibold'>Tower Time</h4>
+								<h4 className='font-pixel text-base'>Tower Time</h4>
 								<LinkButton title='Play Tower Time' icon='play' link='https://towertime.netlify.app/' size={2} />
 							</div>
 							<p>
@@ -231,9 +231,9 @@ export const MainContent = ({
 								a lasting obsession with great UX.
 							</p>
 						</div>
-						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
+						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
-								<h4 className='font-semibold'>Flipcamp</h4>
+								<h4 className='font-pixel text-base'>Flipcamp</h4>
 								<LinkButton title='Flipcamp Repo' icon='gitBranch' link='https://github.com/ahrampy/Flipcamp' size={2} />
 							</div>
 							<p>
@@ -241,9 +241,9 @@ export const MainContent = ({
 								React stack. Good practice in component architecture and the joys of the npm ecosystem.
 							</p>
 						</div>
-						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
+						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
-								<h4 className='font-semibold'>Mustachions</h4>
+								<h4 className='font-pixel text-base'>Mustachions</h4>
 								<LinkButton
 									title='Mustachions Repo'
 									icon='gitBranch'

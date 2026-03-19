@@ -9,7 +9,7 @@
 }
 
 :root {
-	font-family: 'Poppins', sans-serif;
+	font-family: 'IBM Plex Mono', monospace;
 	font-size: 17px;
 	font-weight: 400;
 	line-height: 1.65;
@@ -40,4 +40,10 @@ body {
 
 a, button {
 	@apply transition-opacity hover:opacity-75;
+}
+
+/* Pixel-style dashed borders */
+.pixel-border {
+	border-style: dashed;
+	border-width: 2px;
 }

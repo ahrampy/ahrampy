@@ -4,6 +4,9 @@ export default {
 	darkMode: 'class',
 	theme: {
 		extend: {
+			fontFamily: {
+				pixel: ['"Silkscreen"', 'cursive'],
+			},
 			colors: {
 				primary: '#FAF9F7',
 				secondary: '#1C1917',

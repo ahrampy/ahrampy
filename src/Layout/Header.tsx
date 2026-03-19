@@ -41,8 +41,8 @@ export const Header = ({
 			<div
 				className={`flex flex-col gap-2 ${mobile ? 'items-center text-center' : 'items-start'}`}
 			>
-				<h1 className='text-4xl font-bold'>Adrian Rampy</h1>
-				<h2 className='text-sm font-medium opacity-50'>
+				<h1 className='font-pixel text-4xl'>Adrian Rampy</h1>
+				<h2 className='font-pixel text-sm opacity-50'>
 					Full-Stack Engineer · Technical Lead
 				</h2>
 				<div className='mt-1 flex gap-1'>
@@ -58,12 +58,17 @@ export const Header = ({
 						<button
 							key={id}
 							onClick={() => scrollTo(id)}
-							className={`border-l-2 py-1.5 pl-3 text-left text-sm transition-all duration-200 ${
+							className={`flex items-center gap-2 py-1.5 text-left font-pixel text-base transition-all duration-200 ${
 								activeSection === id
-									? 'border-accent font-semibold opacity-100'
-									: 'border-transparent opacity-40 hover:border-accent/40 hover:opacity-70'
+									? 'opacity-100'
+									: 'opacity-40 hover:opacity-70'
 							}`}
 						>
+							<span
+								className={`inline-block h-1.5 w-1.5 transition-colors duration-200 ${
+									activeSection === id ? 'bg-accent' : 'bg-transparent'
+								}`}
+							/>
 							{label}
 						</button>
 					))}
