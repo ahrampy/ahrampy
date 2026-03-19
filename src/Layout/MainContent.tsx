@@ -31,27 +31,27 @@ const experience = [
 const skills = [
 	{
 		category: 'Languages & Frameworks',
-		tags: ['TypeScript', 'JavaScript (ES6+)', 'React', 'Node.js', 'Ruby on Rails', 'Express', 'Koa', 'GraphQL', 'Ruby', 'Python'],
+		tags: ['TypeScript', 'JavaScript (ES6+)', 'Ruby', 'Python', 'React', 'React Native', 'Expo', 'Next.js', 'Node.js', 'Express', 'Koa', 'Ruby on Rails', 'GraphQL'],
 	},
 	{
 		category: 'Frontend',
-		tags: ['React Query', 'React Hook Form', 'Redux', 'Zustand', 'Next.js', 'Tailwind CSS', 'Material UI', 'Micro-frontends', 'Design Systems', 'WCAG / a11y', 'SSR / SSG', 'Performance Optimization', 'Ag-Grid'],
+		tags: ['Redux', 'Zustand', 'React Query', 'React Hook Form', 'Formik', 'React Table', 'Ag-Grid', 'D3.js', 'Tailwind CSS', 'Styled Components', 'Material UI', 'Design Systems', 'Micro-frontends', 'SSR / SSG', 'WCAG / a11y', 'Performance Optimization', 'Axios', 'Yup', 'Zod'],
 	},
 	{
 		category: 'Backend & Data',
-		tags: ['REST API Design', 'Microservices', 'PostgreSQL', 'Redis', 'TypeORM', 'Sequelize', 'OAuth', 'JWT', 'RBAC'],
+		tags: ['REST API Design', 'Microservices', 'Socket.io', 'PostgreSQL', 'Elasticsearch', 'Redis', 'ioredis', 'TypeORM', 'Sequelize', 'Active Record', 'OAuth', 'JWT', 'RBAC', 'Okta', 'Stripe', 'Plaid', 'Joi'],
 	},
 	{
 		category: 'Infrastructure & DevOps',
-		tags: ['AWS (S3, EC2, Lambda, CloudFront, RDS)', 'Docker', 'GitHub Actions CI/CD', 'GCP', 'Firebase', 'Heroku', 'Rollbar'],
-	},
-	{
-		category: 'Leadership',
-		tags: ['Team Lead', 'Technical Strategy', 'Roadmap Planning', 'Mentorship', 'Hiring', 'Stakeholder Management', 'Agile / Scrum'],
+		tags: ['AWS (S3, EC2, Lambda, CloudFront, RDS, ECS, IAM, CloudWatch)', 'GCP (Cloud Build, Cloud Storage, Memorystore, Cloud SQL)', 'Docker', 'GitHub Actions CI/CD', 'Firebase', 'Heroku', 'Rollbar'],
 	},
 	{
 		category: 'Testing & Tooling',
-		tags: ['Jest', 'Cypress', 'Integration Testing', 'E2E Testing', 'Git', 'Webpack', 'Vite', 'Monorepo Architecture'],
+		tags: ['Jest', 'Vitest', 'Cypress', 'Playwright', 'Integration Testing', 'E2E Testing', 'Git', 'Webpack', 'Vite', 'Monorepo Architecture'],
+	},
+	{
+		category: 'Leadership',
+		tags: ['Team Lead', 'Technical Strategy', 'Roadmap Planning', 'Agile / Scrum', 'Stakeholder Management', 'Mentorship', 'Hiring'],
 	},
 ];
 
