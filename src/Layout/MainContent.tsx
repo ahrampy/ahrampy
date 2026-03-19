@@ -65,7 +65,7 @@ const skills = [
 	},
 ];
 
-const SECTION_IDS = ['about', 'experience', 'skills', 'projects', 'contact'] as const;
+const SECTION_IDS = ['about', 'experience', 'skills', 'projects', 'now', 'contact'] as const;
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -406,6 +406,30 @@ export const MainContent = ({
 								</p>
 							</article>
 						</AnimateIn>
+					</div>
+				</MobileSection>
+			</section>
+
+			<PixelDivider className='hidden lg:flex' />
+
+			<section id='now' className='scroll-mt-8'>
+				<MobileSection label='Currently Building' icon='bolt' sectionId='now'>
+					<div className='pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+						<article className='flex flex-col gap-3'>
+							<h4 className='font-pixel text-base'>Tower Defense Roguelite</h4>
+							<p>
+								Built in Godot with GDScript on an isometric grid, with
+								signal-bus architecture and a cyberpunk/network theme. Runs are structured
+								as 5 escalating sectors with dynamic terrain mutation, 12+ enemy types with
+								distinct AI behaviors, and a full tower ecosystem including support protocols and autonomous thread pools.
+							</p>
+							<p>
+								The architecture leans heavily on data-driven design: every tower and enemy
+								is defined as a resource file, wired through registries, and communicated via
+								a decoupled signal bus (~60 signals, zero shared state). Currently building out
+								meta-progression and sector mutation systems.
+							</p>
+						</article>
 					</div>
 				</MobileSection>
 			</section>
