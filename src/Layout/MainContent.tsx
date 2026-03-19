@@ -10,6 +10,7 @@ declare global {
 		};
 	}
 }
+import { AnimateIn } from '../components/AnimateIn';
 import { LinkButton } from '../components/LinkButton';
 import { PixelIcon } from '../components/PixelIcon';
 import { PixelDivider } from '../components/PixelDivider';
@@ -299,8 +300,8 @@ export const MainContent = ({
 					<div className='relative'>
 						<div className='absolute left-[7px] top-0 h-full w-[2px] border-l-2 border-dashed border-accent/30' />
 						<div className='flex flex-col gap-7'>
-							{experience.map(({ title, company, period, bullets }) => (
-								<div key={company} className='relative pl-7'>
+							{experience.map(({ title, company, period, bullets }, i) => (
+								<AnimateIn key={company} delay={i * 100} className='relative pl-7'>
 									<div className='absolute left-[2px] top-[6px] h-3 w-3 border-2 border-accent bg-primary dark:bg-secondary' />
 									<div className='flex flex-wrap items-baseline gap-x-2'>
 										<h4 className='font-pixel text-base'>{title}</h4>
@@ -315,7 +316,7 @@ export const MainContent = ({
 											</li>
 										))}
 									</ul>
-								</div>
+								</AnimateIn>
 							))}
 						</div>
 					</div>
@@ -327,9 +328,10 @@ export const MainContent = ({
 			<section id='skills' className='scroll-mt-8'>
 				<MobileSection label='Skills' icon='brackets'>
 					<div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
-						{skills.map(({ category, tags }) => (
-							<div
+						{skills.map(({ category, tags }, i) => (
+							<AnimateIn
 								key={category}
+								delay={i * 80}
 								className='pixel-border border-accent/20 bg-accent/[0.04] p-4'
 							>
 								<h4 className='mb-2 font-pixel text-sm'>{category}</h4>
@@ -343,7 +345,7 @@ export const MainContent = ({
 										</span>
 									))}
 								</div>
-							</div>
+							</AnimateIn>
 						))}
 					</div>
 				</MobileSection>
@@ -354,7 +356,7 @@ export const MainContent = ({
 			<section id='projects' className='scroll-mt-8'>
 				<MobileSection label='Side Projects' icon='rocket'>
 					<div className='flex flex-col gap-4'>
-						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+						<AnimateIn delay={0} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-pixel text-base'>Tower Time</h4>
 								<LinkButton title='Play Tower Time' icon='play' link='https://towertime.netlify.app/' size={2} />
@@ -365,8 +367,8 @@ export const MainContent = ({
 								more about coupling, refactoring, and user feedback than any tutorial could, and gave me
 								a lasting obsession with great UX.
 							</p>
-						</div>
-						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+						</AnimateIn>
+						<AnimateIn delay={100} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-pixel text-base'>Flipcamp</h4>
 								<LinkButton title='Flipcamp Repo' icon='gitBranch' link='https://github.com/ahrampy/Flipcamp' size={2} />
@@ -375,8 +377,8 @@ export const MainContent = ({
 								A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR +
 								React stack. Good practice in component architecture and the joys of the npm ecosystem.
 							</p>
-						</div>
-						<div className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+						</AnimateIn>
+						<AnimateIn delay={200} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-pixel text-base'>Mustachions</h4>
 								<LinkButton
@@ -391,7 +393,7 @@ export const MainContent = ({
 								shipped. But animating plants and solving the math behind scaling an isometric room to
 								arbitrary screen sizes was a blast.
 							</p>
-						</div>
+						</AnimateIn>
 					</div>
 				</MobileSection>
 			</section>

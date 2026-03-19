@@ -47,3 +47,24 @@ a, button {
 	border-style: dashed;
 	border-width: 2px;
 }
+
+/* Scroll-triggered fade-in + slide-up */
+.animate-in-item {
+	opacity: 0;
+	transform: translateY(12px);
+	transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animate-in-item.is-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+	.animate-in-item {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
