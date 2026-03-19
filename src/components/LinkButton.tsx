@@ -1,18 +1,17 @@
-import { IconDefinition, SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { PixelIcon } from './PixelIcon';
 
 export const LinkButton = ({
 	title,
 	icon,
 	link,
-	size = 'lg',
+	size = 3,
 }: {
 	title: string;
-	icon: IconDefinition;
+	icon: string;
 	link: string;
-	size?: SizeProp;
+	size?: number;
 }) => (
 	<a href={link} target='_blank' title={title} className='p-1'>
-		<FontAwesomeIcon icon={icon} size={size} />
+		<PixelIcon sprite={icon} size={size} />
 	</a>
 );

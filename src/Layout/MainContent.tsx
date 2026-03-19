@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'preact/hooks';
 import { ComponentChildren } from 'preact';
 import { RefObject } from 'preact';
-import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LinkButton } from '../components/LinkButton';
 import { PixelIcon } from '../components/PixelIcon';
 import { PixelDivider } from '../components/PixelDivider';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
 const experience = [
 	{
@@ -97,10 +93,10 @@ const MobileSection = ({
 				<span className='text-xs font-semibold uppercase tracking-[0.15em] text-accent'>
 					{label}
 				</span>
-				<FontAwesomeIcon
-					icon={expanded ? faChevronUp : faChevronDown}
-					className='text-accent opacity-60'
-					size='xs'
+				<PixelIcon
+					sprite={expanded ? 'chevronUp' : 'chevronDown'}
+					size={2}
+					className='opacity-60'
 				/>
 			</button>
 			{/* Desktop label — always visible */}
@@ -226,7 +222,7 @@ export const MainContent = ({
 						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-semibold'>Tower Time</h4>
-								<LinkButton title='Play Tower Time' icon={faPlay} link='https://towertime.netlify.app/' size='sm' />
+								<LinkButton title='Play Tower Time' icon='play' link='https://towertime.netlify.app/' size={2} />
 							</div>
 							<p>
 								A tower defense game I built while learning JS - complete with pathfinding, custom pixel
@@ -238,7 +234,7 @@ export const MainContent = ({
 						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
 								<h4 className='font-semibold'>Flipcamp</h4>
-								<LinkButton title='Flipcamp Repo' icon={faGitAlt} link='https://github.com/ahrampy/Flipcamp' size='sm' />
+								<LinkButton title='Flipcamp Repo' icon='gitBranch' link='https://github.com/ahrampy/Flipcamp' size={2} />
 							</div>
 							<p>
 								A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR +
@@ -250,9 +246,9 @@ export const MainContent = ({
 								<h4 className='font-semibold'>Mustachions</h4>
 								<LinkButton
 									title='Mustachions Repo'
-									icon={faGitAlt}
+									icon='gitBranch'
 									link='https://github.com/ahrampy/Mustachions'
-									size='sm'
+									size={2}
 								/>
 							</div>
 							<p>

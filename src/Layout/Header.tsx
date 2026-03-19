@@ -1,22 +1,20 @@
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { LinkButton } from '../components/LinkButton';
 
 const links = [
 	{
 		title: 'LinkedIn',
 		url: 'https://www.linkedin.com/in/adrian-rampy-1b8924198/',
-		icon: faLinkedin,
+		icon: 'linkedin',
 	},
 	{
 		title: 'GitHub',
 		url: 'https://github.com/ahrampy',
-		icon: faGithub,
+		icon: 'github',
 	},
 	{
 		title: 'Resume',
 		url: 'https://docs.google.com/document/d/1iWwoVHg0mztsw3AuRrhNCI4nMQAIB7W2RutjPrBYio0/export?format=pdf',
-		icon: faFileArrowDown,
+		icon: 'document',
 	},
 ];
 
