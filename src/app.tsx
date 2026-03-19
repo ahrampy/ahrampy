@@ -17,7 +17,13 @@ export function App() {
 
 	return (
 		<div className={useDark ? 'dark' : ''}>
-			<div className='h-screen overflow-hidden bg-primary text-secondary transition-colors dark:bg-secondary dark:text-primary'>
+			<div className='relative h-screen overflow-hidden bg-primary text-secondary transition-colors dark:bg-secondary dark:text-primary'>
+				<a
+					href='#about'
+					className='absolute left-4 top-4 z-50 -translate-y-full bg-primary px-4 py-2 font-pixel text-sm text-accent opacity-0 transition-transform focus:translate-y-0 focus:opacity-100 dark:bg-secondary'
+				>
+					Skip to main content
+				</a>
 				<div
 					className={`flex h-full transition-opacity duration-700 ${visible ? 'opacity-100' : 'opacity-0'}`}
 				>

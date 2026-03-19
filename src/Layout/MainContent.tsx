@@ -131,10 +131,10 @@ const ContactForm = () => {
 	return (
 		<form onSubmit={handleSubmit} className='flex flex-col gap-4'>
 			{/* Honeypot — hidden from real users, catches bots */}
-			<input type='text' name='_gotcha' style={{ display: 'none' }} tabIndex={-1} autoComplete='off' />
+			<input type='text' name='_gotcha' aria-hidden='true' tabIndex={-1} autoComplete='off' className='sr-only' />
 
 			<div className='flex flex-col gap-1'>
-				<label htmlFor='name' className='font-pixel text-xs uppercase opacity-60'>
+				<label htmlFor='name' className='font-pixel text-xs uppercase opacity-70'>
 					Name
 				</label>
 				<input
@@ -148,7 +148,7 @@ const ContactForm = () => {
 			</div>
 
 			<div className='flex flex-col gap-1'>
-				<label htmlFor='email' className='font-pixel text-xs uppercase opacity-60'>
+				<label htmlFor='email' className='font-pixel text-xs uppercase opacity-70'>
 					Email
 				</label>
 				<input
@@ -162,7 +162,7 @@ const ContactForm = () => {
 			</div>
 
 			<div className='flex flex-col gap-1'>
-				<label htmlFor='message' className='font-pixel text-xs uppercase opacity-60'>
+				<label htmlFor='message' className='font-pixel text-xs uppercase opacity-70'>
 					Message
 				</label>
 				<textarea
@@ -179,12 +179,13 @@ const ContactForm = () => {
 			<div ref={turnstileRef} />
 
 			{status === 'error' && (
-				<p className='text-sm text-red-500'>Something went wrong. Please try again.</p>
+				<p className='text-sm text-red-600 dark:text-red-400' role='alert'>Something went wrong. Please try again.</p>
 			)}
 
 			<button
 				type='submit'
 				disabled={status === 'submitting'}
+				aria-busy={status === 'submitting'}
 				className='self-start border-2 border-dashed border-accent/40 bg-accent/[0.08] px-5 py-2 font-pixel text-sm uppercase text-accent transition-all hover:border-accent/70 hover:bg-accent/[0.15] disabled:opacity-50'
 			>
 				{status === 'submitting' ? 'Sending...' : 'Send'}
@@ -209,21 +210,26 @@ const SectionLabel = ({
 const MobileSection = ({
 	label,
 	icon,
+	sectionId,
 	startsExpanded = false,
 	children,
 }: {
 	label: string;
 	icon?: string;
+	sectionId: string;
 	startsExpanded?: boolean;
 	children: ComponentChildren;
 }) => {
 	const [expanded, setExpanded] = useState(startsExpanded);
+	const contentId = `section-content-${sectionId}`;
 	return (
 		<div>
 			{/* Mobile toggle button — hidden on desktop */}
 			<button
 				className='flex w-full items-center gap-2 lg:hidden'
 				onClick={() => setExpanded(!expanded)}
+				aria-expanded={expanded}
+				aria-controls={contentId}
 			>
 				{icon && <PixelIcon sprite={icon} size={2} />}
 				<span className='font-pixel text-sm uppercase text-accent'>
@@ -240,7 +246,7 @@ const MobileSection = ({
 				{label}
 			</SectionLabel>
 			{/* Content: always visible on desktop, toggled on mobile */}
-			<div className={`${expanded ? 'block' : 'hidden lg:block'} mt-4 lg:mt-0`}>{children}</div>
+			<div id={contentId} className={`${expanded ? 'block' : 'hidden lg:block'} mt-4 lg:mt-0`}>{children}</div>
 		</div>
 	);
 };
@@ -282,7 +288,7 @@ export const MainContent = ({
 	return (
 		<div className='flex flex-col gap-6 pb-24 lg:gap-10'>
 			<section id='about' className='scroll-mt-8'>
-				<MobileSection label='About' icon='terminal' startsExpanded>
+				<MobileSection label='About' icon='terminal' sectionId='about' startsExpanded>
 					<p className='leading-relaxed'>
 						Full-stack engineer with {new Date().getFullYear() - 2018}+ years building scalable web
 						applications across enterprise and startup environments. I've led cross-functional teams,
@@ -296,7 +302,7 @@ export const MainContent = ({
 			<PixelDivider className='hidden lg:flex' />
 
 			<section id='experience' className='scroll-mt-8'>
-				<MobileSection label='Work Experience' icon='briefcase' startsExpanded>
+				<MobileSection label='Work Experience' icon='briefcase' sectionId='experience' startsExpanded>
 					<div className='relative'>
 						<div className='absolute left-[7px] top-0 h-full w-[2px] border-l-2 border-dashed border-accent/30' />
 						<div className='flex flex-col gap-7'>
@@ -305,13 +311,13 @@ export const MainContent = ({
 									<div className='absolute left-[2px] top-[6px] h-3 w-3 border-2 border-accent bg-primary dark:bg-secondary' />
 									<div className='flex flex-wrap items-baseline gap-x-2'>
 										<h4 className='font-pixel text-base'>{title}</h4>
-										<span className='text-sm opacity-60'>{company}</span>
+										<span className='text-sm opacity-70'>{company}</span>
 									</div>
-									<p className='mb-2 font-pixel text-xs opacity-50'>{period}</p>
+									<p className='mb-2 font-pixel text-xs opacity-60'>{period}</p>
 									<ul className='space-y-1.5'>
 										{bullets.map((b) => (
 											<li key={b} className='flex gap-2 text-sm'>
-												<span className='mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent/40' />
+												<span aria-hidden='true' className='mt-1.5 h-1.5 w-1.5 shrink-0 bg-accent/40' />
 												{b}
 											</li>
 										))}
@@ -326,7 +332,7 @@ export const MainContent = ({
 			<PixelDivider className='hidden lg:flex' />
 
 			<section id='skills' className='scroll-mt-8'>
-				<MobileSection label='Skills' icon='brackets'>
+				<MobileSection label='Skills' icon='brackets' sectionId='skills'>
 					<div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
 						{skills.map(({ category, tags }, i) => (
 							<AnimateIn
@@ -335,16 +341,16 @@ export const MainContent = ({
 								className='pixel-border border-accent/20 bg-accent/[0.04] p-4'
 							>
 								<h4 className='mb-2 font-pixel text-sm'>{category}</h4>
-								<div className='flex flex-wrap gap-1.5'>
+								<ul className='flex flex-wrap gap-1.5'>
 									{tags.map((tag) => (
-										<span
+										<li
 											key={tag}
 											className='border border-dashed border-accent/30 bg-accent/[0.06] px-2.5 py-0.5 text-xs'
 										>
 											{tag}
-										</span>
+										</li>
 									))}
-								</div>
+								</ul>
 							</AnimateIn>
 						))}
 					</div>
@@ -354,45 +360,51 @@ export const MainContent = ({
 			<PixelDivider className='hidden lg:flex' />
 
 			<section id='projects' className='scroll-mt-8'>
-				<MobileSection label='Side Projects' icon='rocket'>
+				<MobileSection label='Side Projects' icon='rocket' sectionId='projects'>
 					<div className='flex flex-col gap-4'>
-						<AnimateIn delay={0} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
-							<div className='flex items-center gap-2'>
-								<h4 className='font-pixel text-base'>Tower Time</h4>
-								<LinkButton title='Play Tower Time' icon='play' link='https://towertime.netlify.app/' size={2} />
-							</div>
-							<p>
-								A tower defense game I built while learning JS - complete with pathfinding, custom pixel
-								art sprites, and a community-submitted soundtrack. It went surprisingly viral, taught me
-								more about coupling, refactoring, and user feedback than any tutorial could, and gave me
-								a lasting obsession with great UX.
-							</p>
+						<AnimateIn delay={0} className='pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+							<article className='flex flex-col gap-3'>
+								<div className='flex items-center gap-2'>
+									<h4 className='font-pixel text-base'>Tower Time</h4>
+									<LinkButton title='Play Tower Time' icon='play' link='https://towertime.netlify.app/' size={2} />
+								</div>
+								<p>
+									A tower defense game I built while learning JS - complete with pathfinding, custom pixel
+									art sprites, and a community-submitted soundtrack. It went surprisingly viral, taught me
+									more about coupling, refactoring, and user feedback than any tutorial could, and gave me
+									a lasting obsession with great UX.
+								</p>
+							</article>
 						</AnimateIn>
-						<AnimateIn delay={100} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
-							<div className='flex items-center gap-2'>
-								<h4 className='font-pixel text-base'>Flipcamp</h4>
-								<LinkButton title='Flipcamp Repo' icon='gitBranch' link='https://github.com/ahrampy/Flipcamp' size={2} />
-							</div>
-							<p>
-								A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR +
-								React stack. Good practice in component architecture and the joys of the npm ecosystem.
-							</p>
+						<AnimateIn delay={100} className='pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+							<article className='flex flex-col gap-3'>
+								<div className='flex items-center gap-2'>
+									<h4 className='font-pixel text-base'>Flipcamp</h4>
+									<LinkButton title='Flipcamp Repo' icon='gitBranch' link='https://github.com/ahrampy/Flipcamp' size={2} />
+								</div>
+								<p>
+									A Hipcamp clone built with Rails, React, and Redux to get hands-on with the full RoR +
+									React stack. Good practice in component architecture and the joys of the npm ecosystem.
+								</p>
+							</article>
 						</AnimateIn>
-						<AnimateIn delay={200} className='flex flex-col gap-3 pixel-border border-accent/20 bg-accent/[0.04] p-5'>
-							<div className='flex items-center gap-2'>
-								<h4 className='font-pixel text-base'>Mustachions</h4>
-								<LinkButton
-									title='Mustachions Repo'
-									icon='gitBranch'
-									link='https://github.com/ahrampy/Mustachions'
-									size={2}
-								/>
-							</div>
-							<p>
-								A React Native mobile game experiment with a friend - art-focused, isometric, and never
-								shipped. But animating plants and solving the math behind scaling an isometric room to
-								arbitrary screen sizes was a blast.
-							</p>
+						<AnimateIn delay={200} className='pixel-border border-accent/20 bg-accent/[0.04] p-5'>
+							<article className='flex flex-col gap-3'>
+								<div className='flex items-center gap-2'>
+									<h4 className='font-pixel text-base'>Mustachions</h4>
+									<LinkButton
+										title='Mustachions Repo'
+										icon='gitBranch'
+										link='https://github.com/ahrampy/Mustachions'
+										size={2}
+									/>
+								</div>
+								<p>
+									A React Native mobile game experiment with a friend - art-focused, isometric, and never
+									shipped. But animating plants and solving the math behind scaling an isometric room to
+									arbitrary screen sizes was a blast.
+								</p>
+							</article>
 						</AnimateIn>
 					</div>
 				</MobileSection>
@@ -401,7 +413,7 @@ export const MainContent = ({
 			<PixelDivider className='hidden lg:flex' />
 
 			<section id='contact' className='scroll-mt-8'>
-				<MobileSection label='Contact' icon='mail'>
+				<MobileSection label='Contact' icon='mail' sectionId='contact'>
 					<ContactForm />
 				</MobileSection>
 			</section>

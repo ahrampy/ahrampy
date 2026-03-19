@@ -42,6 +42,14 @@ a, button {
 	@apply transition-opacity hover:opacity-75;
 }
 
+a:focus-visible, button:focus-visible {
+	@apply outline outline-2 outline-offset-2 outline-accent;
+}
+
+input:focus-visible, textarea:focus-visible {
+	@apply outline outline-2 outline-offset-2 outline-accent;
+}
+
 /* Pixel-style dashed borders */
 .pixel-border {
 	border-style: dashed;

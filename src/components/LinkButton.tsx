@@ -11,7 +11,7 @@ export const LinkButton = ({
 	link: string;
 	size?: number;
 }) => (
-	<a href={link} target='_blank' title={title} className='p-1'>
+	<a href={link} target='_blank' rel='noopener noreferrer' aria-label={title} className='p-1'>
 		<PixelIcon sprite={icon} size={size} />
 	</a>
 );
