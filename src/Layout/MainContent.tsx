@@ -1,6 +1,15 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { ComponentChildren } from 'preact';
 import { RefObject } from 'preact';
+
+declare global {
+	interface Window {
+		turnstile?: {
+			render: (el: HTMLElement, opts: Record<string, unknown>) => string;
+			remove: (id: string) => void;
+		};
+	}
+}
 import { LinkButton } from '../components/LinkButton';
 import { PixelIcon } from '../components/PixelIcon';
 import { PixelDivider } from '../components/PixelDivider';
@@ -55,7 +64,133 @@ const skills = [
 	},
 ];
 
-const SECTION_IDS = ['about', 'experience', 'skills', 'projects'] as const;
+const SECTION_IDS = ['about', 'experience', 'skills', 'projects', 'contact'] as const;
+
+type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
+
+const FORMSPREE_ID = 'mbdzwjpb';
+const TURNSTILE_SITE_KEY = '0x4AAAAAACtJ-ixanFQS1C5J';
+
+const inputClass =
+	'w-full border-2 border-dashed border-accent/30 bg-accent/[0.04] px-3 py-2 text-sm text-inherit placeholder:opacity-40 focus:border-accent/60 focus:outline-none';
+
+const ContactForm = () => {
+	const [status, setStatus] = useState<FormStatus>('idle');
+	const turnstileRef = useRef<HTMLDivElement>(null);
+	const widgetIdRef = useRef<string | null>(null);
+
+	useEffect(() => {
+		const el = turnstileRef.current;
+		if (!el || !window.turnstile) return;
+
+		widgetIdRef.current = window.turnstile.render(el, {
+			sitekey: TURNSTILE_SITE_KEY,
+			theme: 'auto',
+		});
+
+		return () => {
+			if (widgetIdRef.current && window.turnstile) {
+				window.turnstile.remove(widgetIdRef.current);
+			}
+		};
+	}, []);
+
+	const handleSubmit = async (e: Event) => {
+		e.preventDefault();
+		setStatus('submitting');
+
+		const form = e.target as HTMLFormElement;
+		const data = new FormData(form);
+
+		try {
+			const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+				method: 'POST',
+				body: data,
+				headers: { Accept: 'application/json' },
+			});
+			if (res.ok) {
+				setStatus('success');
+				form.reset();
+			} else {
+				setStatus('error');
+			}
+		} catch {
+			setStatus('error');
+		}
+	};
+
+	if (status === 'success') {
+		return (
+			<div className='pixel-border border-accent/20 bg-accent/[0.04] p-6 text-center'>
+				<p className='font-pixel text-sm text-accent'>Thanks! I'll get back to you soon.</p>
+			</div>
+		);
+	}
+
+	return (
+		<form onSubmit={handleSubmit} className='flex flex-col gap-4'>
+			{/* Honeypot — hidden from real users, catches bots */}
+			<input type='text' name='_gotcha' style={{ display: 'none' }} tabIndex={-1} autoComplete='off' />
+
+			<div className='flex flex-col gap-1'>
+				<label htmlFor='name' className='font-pixel text-xs uppercase opacity-60'>
+					Name
+				</label>
+				<input
+					id='name'
+					name='name'
+					type='text'
+					required
+					placeholder='Your name'
+					className={inputClass}
+				/>
+			</div>
+
+			<div className='flex flex-col gap-1'>
+				<label htmlFor='email' className='font-pixel text-xs uppercase opacity-60'>
+					Email
+				</label>
+				<input
+					id='email'
+					name='email'
+					type='email'
+					required
+					placeholder='you@example.com'
+					className={inputClass}
+				/>
+			</div>
+
+			<div className='flex flex-col gap-1'>
+				<label htmlFor='message' className='font-pixel text-xs uppercase opacity-60'>
+					Message
+				</label>
+				<textarea
+					id='message'
+					name='message'
+					required
+					rows={4}
+					placeholder='What would you like to say?'
+					className={`${inputClass} resize-y`}
+				/>
+			</div>
+
+			{/* Cloudflare Turnstile — managed mode, rendered imperatively */}
+			<div ref={turnstileRef} />
+
+			{status === 'error' && (
+				<p className='text-sm text-red-500'>Something went wrong. Please try again.</p>
+			)}
+
+			<button
+				type='submit'
+				disabled={status === 'submitting'}
+				className='self-start border-2 border-dashed border-accent/40 bg-accent/[0.08] px-5 py-2 font-pixel text-sm uppercase text-accent transition-all hover:border-accent/70 hover:bg-accent/[0.15] disabled:opacity-50'
+			>
+				{status === 'submitting' ? 'Sending...' : 'Send'}
+			</button>
+		</form>
+	);
+};
 
 const SectionLabel = ({
 	children,
@@ -258,6 +393,14 @@ export const MainContent = ({
 							</p>
 						</div>
 					</div>
+				</MobileSection>
+			</section>
+
+			<PixelDivider className='hidden lg:flex' />
+
+			<section id='contact' className='scroll-mt-8'>
+				<MobileSection label='Contact' icon='mail'>
+					<ContactForm />
 				</MobileSection>
 			</section>
 		</div>
