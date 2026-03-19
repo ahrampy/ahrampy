@@ -7,7 +7,7 @@ export default {
 			colors: {
 				primary: '#FAF9F7',
 				secondary: '#1C1917',
-				accent: '#B08050',
+				accent: 'hsl(var(--accent-hue) var(--accent-sat) var(--accent-lit) / <alpha-value>)',
 			},
 			fontWeight: {
 				light: '200',

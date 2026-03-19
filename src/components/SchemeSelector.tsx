@@ -10,11 +10,11 @@ export const SchemeSelector = ({
 	return (
 		<div className={`flex gap-1 transition-opacity duration-1000 ${show ? 'opacity-100' : 'opacity-0'}`}>
 			<button className='flex items-center gap-2 p-1' onClick={() => setUseDark(false)}>
-				<div className={`h-2 w-2 border border-secondary dark:border-primary ${!useDark && 'bg-secondary'}`} />
+				<div className={`h-2 w-2 border border-secondary dark:border-primary ${!useDark && 'bg-accent'}`} />
 				<p>light</p>
 			</button>
 			<button className='flex items-center gap-2 p-1' onClick={() => setUseDark(true)}>
-				<div className={`h-2 w-2 border border-secondary dark:border-primary ${useDark && 'bg-primary'}`} />
+				<div className={`h-2 w-2 border border-secondary dark:border-primary ${useDark && 'bg-accent'}`} />
 				<p>dark</p>
 			</button>
 		</div>

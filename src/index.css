@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --accent-hue {
+	syntax: '<number>';
+	inherits: true;
+	initial-value: 30;
+}
+
 :root {
 	font-family: 'Poppins', sans-serif;
 	font-size: 17px;
@@ -11,6 +17,21 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+
+	--accent-hue: 30;
+	--accent-sat: 45%;
+	--accent-lit: 42%;
+	animation: hue-rotate 60s linear infinite;
+}
+
+.dark {
+	--accent-sat: 50%;
+	--accent-lit: 62%;
+}
+
+@keyframes hue-rotate {
+	from { --accent-hue: 0; }
+	to { --accent-hue: 360; }
 }
 
 body {
