@@ -268,6 +268,11 @@ export const MainContent = ({
 				setActiveSection(SECTION_IDS[0]);
 				return;
 			}
+			// If scrolled to the bottom, highlight the last section
+			if (container.scrollTop + container.clientHeight >= container.scrollHeight - 50) {
+				setActiveSection(SECTION_IDS[SECTION_IDS.length - 1]);
+				return;
+			}
 			const threshold = container.clientHeight * 0.35;
 			let active: string = SECTION_IDS[0];
 			for (const id of SECTION_IDS) {
@@ -294,7 +299,7 @@ export const MainContent = ({
 						applications across enterprise and startup environments. I've led cross-functional teams,
 						driven technical strategy, and mentored engineers, while staying hands-on across the stack.
 						I care deeply about the craft: readable code, thoughtful architecture, and experiences
-						users love. When I'm not shipping, I'm probably outside or trying something new.
+						users love. Outside of work, I'm usually hiking with my dog, kicking a ball around, or losing my hearing at a show.
 					</p>
 				</MobileSection>
 			</section>
@@ -400,9 +405,9 @@ export const MainContent = ({
 									/>
 								</div>
 								<p>
-									A React Native mobile game experiment with a friend - art-focused, isometric, and never
-									shipped. But animating plants and solving the math behind scaling an isometric room to
-									arbitrary screen sizes was a blast.
+									A React Native mobile game with art-driven, isometric visuals. Built custom plant
+									animations and tackled the math behind scaling an isometric room and its contents to arbitrary screen
+									sizes.
 								</p>
 							</article>
 						</AnimateIn>
