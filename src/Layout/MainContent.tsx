@@ -4,6 +4,8 @@ import { RefObject } from 'preact';
 import { faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { LinkButton } from '../components/LinkButton';
+import { PixelIcon } from '../components/PixelIcon';
+import { PixelDivider } from '../components/PixelDivider';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { faGitAlt } from '@fortawesome/free-brands-svg-icons';
 
@@ -59,18 +61,27 @@ const skills = [
 
 const SECTION_IDS = ['about', 'experience', 'skills', 'projects'] as const;
 
-const SectionLabel = ({ children }: { children: ComponentChildren }) => (
-	<h3 className='mb-5 text-xs font-semibold uppercase tracking-[0.15em] text-accent'>
+const SectionLabel = ({
+	children,
+	icon,
+}: {
+	children: ComponentChildren;
+	icon?: string;
+}) => (
+	<h3 className='mb-5 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.15em] text-accent lg:flex'>
+		{icon && <PixelIcon sprite={icon} size={2} />}
 		{children}
 	</h3>
 );
 
 const MobileSection = ({
 	label,
+	icon,
 	startsExpanded = false,
 	children,
 }: {
 	label: string;
+	icon?: string;
 	startsExpanded?: boolean;
 	children: ComponentChildren;
 }) => {
@@ -82,6 +93,7 @@ const MobileSection = ({
 				className='flex w-full items-center gap-2 lg:hidden'
 				onClick={() => setExpanded(!expanded)}
 			>
+				{icon && <PixelIcon sprite={icon} size={2} />}
 				<span className='text-xs font-semibold uppercase tracking-[0.15em] text-accent'>
 					{label}
 				</span>
@@ -92,11 +104,11 @@ const MobileSection = ({
 				/>
 			</button>
 			{/* Desktop label — always visible */}
-			<SectionLabel>
-				<span className='hidden lg:inline'>{label}</span>
+			<SectionLabel icon={icon}>
+				{label}
 			</SectionLabel>
 			{/* Content: always visible on desktop, toggled on mobile */}
-			<div className={expanded ? 'block' : 'hidden lg:block'}>{children}</div>
+			<div className={`${expanded ? 'block' : 'hidden lg:block'} mt-4 lg:mt-0`}>{children}</div>
 		</div>
 	);
 };
@@ -136,9 +148,9 @@ export const MainContent = ({
 	}, []);
 
 	return (
-		<div className='flex flex-col gap-6 pb-24 lg:gap-16'>
+		<div className='flex flex-col gap-6 pb-24 lg:gap-10'>
 			<section id='about' className='scroll-mt-8'>
-				<MobileSection label='About' startsExpanded>
+				<MobileSection label='About' icon='terminal' startsExpanded>
 					<p className='leading-relaxed'>
 						Full-stack engineer with {new Date().getFullYear() - 2018}+ years building scalable web
 						applications across enterprise and startup environments. I've led cross-functional teams,
@@ -149,8 +161,10 @@ export const MainContent = ({
 				</MobileSection>
 			</section>
 
+			<PixelDivider className='hidden lg:flex' />
+
 			<section id='experience' className='scroll-mt-8'>
-				<MobileSection label='Work Experience' startsExpanded>
+				<MobileSection label='Work Experience' icon='briefcase' startsExpanded>
 					<div className='relative'>
 						<div className='absolute left-[7px] top-0 h-full w-px bg-accent/30' />
 						<div className='flex flex-col gap-7'>
@@ -177,8 +191,10 @@ export const MainContent = ({
 				</MobileSection>
 			</section>
 
+			<PixelDivider className='hidden lg:flex' />
+
 			<section id='skills' className='scroll-mt-8'>
-				<MobileSection label='Skills'>
+				<MobileSection label='Skills' icon='brackets'>
 					<div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
 						{skills.map(({ category, tags }) => (
 							<div
@@ -202,8 +218,10 @@ export const MainContent = ({
 				</MobileSection>
 			</section>
 
+			<PixelDivider className='hidden lg:flex' />
+
 			<section id='projects' className='scroll-mt-8'>
-				<MobileSection label='Side Projects'>
+				<MobileSection label='Side Projects' icon='rocket'>
 					<div className='flex flex-col gap-4'>
 						<div className='flex flex-col gap-3 rounded-lg border border-accent/20 bg-accent/[0.04] p-5'>
 							<div className='flex items-center gap-2'>
