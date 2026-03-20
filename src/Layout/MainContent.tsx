@@ -14,7 +14,6 @@ import { AnimateIn } from '../components/AnimateIn';
 import { LinkButton } from '../components/LinkButton';
 import { PixelIcon } from '../components/PixelIcon';
 import { PixelDivider } from '../components/PixelDivider';
-import { SnakeGame } from '../components/SnakeGame';
 
 const experience = [
 	{
@@ -131,7 +130,7 @@ const ContactForm = () => {
 
 	return (
 		<form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-			{/* Honeypot — hidden from real users, catches bots */}
+			{/* Honeypot */}
 			<input type='text' name='_gotcha' aria-hidden='true' tabIndex={-1} autoComplete='off' className='sr-only' />
 
 			<div className='flex flex-col gap-1'>
@@ -389,7 +388,7 @@ export const MainContent = ({
 
 			<PixelDivider className='hidden lg:flex' />
 
-			<section className='scroll-mt-8'>
+			{/* <section className='scroll-mt-8'>
 				<MobileSection label='Break Time' icon='play' sectionId='breaktime'>
 					<AnimateIn delay={0}>
 						<SnakeGame />
@@ -397,7 +396,7 @@ export const MainContent = ({
 				</MobileSection>
 			</section>
 
-			<PixelDivider className='hidden lg:flex' />
+			<PixelDivider className='hidden lg:flex' /> */}
 
 			<section id='projects' className='scroll-mt-8'>
 				<MobileSection label='Side Projects' icon='rocket' sectionId='projects'>
