@@ -10,6 +10,8 @@
 		"format": "prettier --write ."
 	},
 	"dependencies": {
+		"@fontsource/ibm-plex-mono": "^5.2.7",
+		"@fontsource/silkscreen": "^5.2.8",
 		"preact": "^10.19.3"
 	},
 	"devDependencies": {
